@@ -1,0 +1,29 @@
+<div class="panel panel-default" style="width: 350px; margin: 50px auto">
+    <div class="panel-heading">
+        <div class="panel-title">Sign In</div>
+    </div>     
+    <div style="padding-top:30px" class="panel-body">
+		<div class="alert alert-danger" ng-if="error" ng-bind="error"></div>
+        <form id="loginform" class="form-horizontal" role="form" method="post">
+            <div style="margin-bottom: 20px" class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                <input id="login-username" type="text" class="form-control" ng-model="loginController.username" value="" placeholder="Username">
+			</div>
+
+            <div style="margin-bottom: 20px" class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                <input id="login-password" type="password" class="form-control" ng-model="loginController.password" placeholder="Password">
+            </div>
+            <div style="margin-top:10px" class="form-group">
+                <div class="col-sm-12 controls">
+                    <button class="btn btn-success btn-block" type="button" ng-click="loginController.validate()">Sign in</button>
+                </div>
+				<!--
+                <div class="col-sm-6 controls">
+                    <a class="btn btn-danger btn-block">Forgot Password</a>
+                </div>
+				-->
+            </div>
+        </form>     
+    </div>                     
+</div> 

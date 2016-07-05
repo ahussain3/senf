@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html ng-app="gravityApp" class="no-js" lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>FB Newsfeed Replica</title>
+		<link rel="icon" href="favicon.ico" sizes="16x16" type="image/png">
+		
+		<link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.css">
+		<link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap-theme.css">
+		<link rel="stylesheet" href="styles/custom.css">
+	</head>
+	
+	<style type="text/css">
+		body {
+			font-size: 12px !important;
+		}
+	</style>
+
+	<body>
+		<!--[if lt IE 7]>
+			<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+		<![endif]-->
+		<div id="js-loader" class="b-loader"></div>
+		<div ui-view="header" class="b-nav-bar-wrapper"></div>
+			<div class="b-container">
+				<div class="row collapse">
+					<div ui-view="left" class="columns b-left-side"></div>
+					<div ui-view="content" class="columns b-center"></div>
+					<div ui-view="right" class="columns b-right-side"></div>
+				</div>
+			</div>
+		<div ui-view="footer"></div>
+
+		<script src="../../bower_components/jquery/dist/jquery.js"></script>
+		<script src="../../bower_components/bootstrap/dist/js/bootstrap.js"></script>
+		<script src="../../bower_components/angular/angular.js"></script>
+		<script src="../../bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+
+		<!-- Angular UI bootstrap file -->
+		<script src="../../bower_components/angular-bootstrap/ui-bootstrap.js"></script>
+		<script src="../../bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+
+		<!-- Main file -->
+		<script src="scripts/app.js"></script>
+		
+		<!-- Controller files -->
+		<script src="scripts/modules/login/login.controller.js"></script>
+		<script src="scripts/modules/home/home.controller.js"></script>
+
+		<!-- Service files -->
+		<script src="scripts/modules/login/login.service.js"></script>
+
+
+	</body>
+	<script type="text/javascript">
+		var App = {
+			init: function () {
+				var loader = document.getElementById('js-loader');
+				loader.style.opacity = '0';
+				loader.style.display = 'none';
+				stateCheck = setInterval(function () {
+					console.log(document.readyState);
+					if (document.readyState === 'complete') {
+						clearInterval(stateCheck);
+						loader.style.display = 'none';
+					}
+				}, 300);
+				this.showMore();
+				this.likeAction();
+
+			},
+			showMore: function () {
+				var moreButton = document.querySelectorAll('.b-feed-more__button'),
+					moreMenu = document.querySelectorAll('.b-more-menu');
+
+				Array.prototype.forEach.call(moreMenu, function (el, i) {
+					el.style.display = 'none';
+				});
+
+				Array.prototype.forEach.call(moreButton, function (el, i) {
+					return false;
+					el.addEventListener('click', function () {
+						
+						this.nextElementSibling.style.display == "block" ? this.nextElementSibling.style.display = "none" :
+							this.nextElementSibling.style.display = "block";
+
+					});
+				});
+			},
+			likeAction: function () {
+			  var likeButton = document.querySelectorAll('.js-action-like');
+			  Array.prototype.forEach.call(likeButton, function (el, i) {
+				  el.addEventListener('click', function () {
+					  this.classList.contains("is-active") ? this.classList.remove("is-active") :
+						  this.classList.add("is-active");
+				  });
+			  });
+			}
+		};
+
+		stateCheck = setInterval(function () {
+			if (document.readyState === 'complete') {
+				clearInterval(stateCheck);
+				App.init();
+			}
+		}, 100);
+		
+		App.init();
+		
+	</script>
+</html>

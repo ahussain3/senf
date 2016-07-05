@@ -1,0 +1,31 @@
+{
+  "name": "newsfeed",
+  "version": "1.0.0",
+  "description": "facebook newsfeed using MEAN stack.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://amitrshah@bitbucket.org/amitrshah/gravity.git"
+  },
+  "keywords": [
+    "mean",
+    "newsfeed"
+  ],
+  "author": "Awais Hussain & Amit Shah",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/amitrshah/gravity#readme",
+  "dependencies": {
+    "body-parser": "^1.15.1",
+    "csvtojson": "^0.5.14",
+    "express": "^4.13.4",
+    "mongoose": "^4.4.19"
+  },
+  "devDependencies": {
+    "gulp": "3.8.11",
+    "gulp-mocha": "2.0.1",
+    "mocha": "2.2.4"
+  }
+}
